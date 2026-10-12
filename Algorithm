@@ -1,18 +1,24 @@
-START & Initialize: Set MAX_PATIENTS = 100, initialize 6 parallel arrays (patientID, fullName, age, gender, contactNumber, diagnosisHistory), recordCount = 0, and isSystemRunning = TRUE.  
-​Main Loop: While isSystemRunning == TRUE:  
-​Display menu (1. Register, 2. Search, 3. Update, 4. Exit) and read menuChoice.  
-​Choice 1 \rightarrow Call RegisterPatient().  
-​Choice 2 \rightarrow Call SearchPatient().  
-​Choice 3 \rightarrow Call UpdateRecord().  
-​Choice 4 \rightarrow Set isSystemRunning = FALSE.  
-​Other \rightarrow Display error.  
-​ValidatePatientInput(pID, name, age): Return TRUE if pID/name are not empty and age is between 0–130; else FALSE.
-​FindPatientIndex(targetID): Loop index from 0 to recordCount - 1. Return index if matched; else return -1.
-​RegisterPatient():
-​If recordCount >= 100, show full error.  
-​Read details (pID, name, age, gender, phone, diagnosis).  
-​If invalid input or ID exists (FindPatientIndex != -1), show error.  
-​Save inputs into arrays at recordCount, increment recordCount by 1, and show success.  
-​SearchPatient(): Read targetID. Find position = FindPatientIndex(targetID). If -1, show "Not found"; else display details from arrays.  
-​UpdateRecord(): Read targetID. Find position = FindPatientIndex(targetID). If -1, show error; else read newEntry, append to diagnosisHistory[position], and show success.  
-​END PROGRAM  
+# DHPDMS Step-by-Step Algorithm
+
+1. **Start** the system.
+2. Set `MAX_PATIENTS = 100` and create six parallel arrays: `patientID`, `fullName`, `age`, `gender`, `contactNumber`, and `diagnosisHistory`.
+3. Set `recordCount = 0` and `isSystemRunning = TRUE`.
+4. While `isSystemRunning == TRUE`:
+   1. Display the menu: Register, Search, Update, or Exit.
+   2. Read `menuChoice`.
+   3. If `menuChoice == 1`, call `RegisterPatient`.
+   4. Else if `menuChoice == 2`, call `SearchPatient`.
+   5. Else if `menuChoice == 3`, call `UpdateRecord`.
+   6. Else if `menuChoice == 4`, set `isSystemRunning = FALSE` and print the closure message.
+   7. Otherwise, print an invalid-selection message.
+5. **ValidatePatientInput** returns `TRUE` only when the patient ID and name are not blank and the age is between 0 and 130 inclusive.
+6. **FindPatientIndex** loops from index `0` to `recordCount - 1`; it returns the matching index or `-1` when no patient is found.
+7. **RegisterPatient**:
+   1. If `recordCount >= MAX_PATIENTS`, print a storage-full error and stop.
+   2. Read the patient ID, name, age, gender, contact number, and diagnosis.
+   3. If validation fails, print an error and stop.
+   4. If the patient ID already exists, print a duplicate-ID error and stop.
+   5. Store the values at index `recordCount`, increment `recordCount`, and print a success message.
+8. **SearchPatient** reads a target patient ID, finds its index, and either prints the complete record or prints `Patient record not found.`.
+9. **UpdateRecord** reads a target patient ID, finds its index, and either appends a diagnosis/treatment note or prints `Patient ID does not exist.`.
+10. When the loop ends, **end the program**.

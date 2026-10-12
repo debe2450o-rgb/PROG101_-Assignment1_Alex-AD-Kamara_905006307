@@ -1,17 +1,16 @@
 flowchart TD
-    A([Start]) --> B[Initialize arrays and recordCount = 0]
-    B --> C[Display main menu]
-    C --> D[/Read menu choice/]
-    D --> E{Choice}
-    E -- 1 Register --> F[Validate and store patient record]
-    E -- 2 Search --> G[FindPatientIndex by Patient ID]
-    E -- 3 Update --> H[Find ID and append diagnosis or treatment]
-    E -- 4 Exit --> I[Print successful closure]
-    E -- Other --> J[Print invalid selection]
-    F --> K{System still running?}
-    G --> K
-    H --> K
-    J --> K
-    K -- Yes --> C
-    K -- No --> L([End])
-    I --> L
+    Start([START]) --> Init[Initialize MAX_PATIENTS, arrays, recordCount = 0, and isSystemRunning = TRUE]
+    Init --> Running{isSystemRunning == TRUE?}
+    Running -- No --> End([END PROGRAM])
+    Running -- Yes --> Menu[/Display menu and read menuChoice/]
+    Menu --> Choice{menuChoice}
+    Choice -- "1: Register" --> Register[[CALL RegisterPatient]]
+    Choice -- "2: Search" --> Search[[CALL SearchPatient]]
+    Choice -- "3: Update" --> Update[[CALL UpdateRecord]]
+    Choice -- "4: Exit" --> Close[/Print "System closed successfully."/]
+    Choice -- "Other" --> Invalid[/Print "Invalid selection."/]
+    Register --> Running
+    Search --> Running
+    Update --> Running
+    Invalid --> Running
+    Close --> End

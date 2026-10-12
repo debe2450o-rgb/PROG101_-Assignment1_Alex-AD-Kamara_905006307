@@ -16,7 +16,7 @@ This project contains **no real patient data**. It is not a clinical system. Any
 ## SDG alignment
 
 - SDG 3 — Good Health and Well-being: supports faster retrieval and continuity of health information.
-- SDG 9 — Industry, Innovation and Infrastructure:** demonstrates adaptable, open digital infrastructure for public services.
+- SDG 9 — Industry, Innovation and Infrastructure: demonstrates adaptable, open digital infrastructure for public services.
 
 ## Modules
 
@@ -26,6 +26,24 @@ This project contains **no real patient data**. It is not a clinical system. Any
 - `UpdateRecord` — locates a patient and appends a diagnosis/treatment note.
 - `FindPatientIndex` — reusable sequential-search function.
 - `ValidatePatientInput` — prevents blank IDs, impossible ages, and empty names.
+
+## Optional runnable reference
+
+`src/patient_data_system.py` is a small Python implementation of the submitted
+logic. It stores synthetic records in memory and is included for demonstration
+and testing only; it is not a clinical application.
+
+Run it with:
+
+```bash
+python3 src/patient_data_system.py
+```
+
+Run the automated checks with:
+
+```bash
+python3 -m pytest -q
+```
 
 ## Structure
 
@@ -38,6 +56,8 @@ This project contains **no real patient data**. It is not a clinical system. Any
 ├── Flowcharts/dhpdm_system.fprg
 ├── Flowcharts/dhpdm_system.png
 ├── Pseudocode/dhpdm_pseudocode.txt
+├── src/patient_data_system.py
+├── tests/test_patient_data_system.py
 ├── References/sources.md
 ├── Screenshots/README.md
 └── DHPDMS_Project.zip

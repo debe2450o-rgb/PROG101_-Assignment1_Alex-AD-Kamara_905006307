@@ -4,7 +4,7 @@
 
 **Course Code:** PROG101  
 **Course Title:** Principles of Programming Logic and Design  
-**Student:** Alex Alimamy Debe Kamara (Abubakar Idrisu Bangura)  
+**Student:** Alex Alimamy Debe Kamara  
 **Student ID:** 905006307  
 **Department:** Information and Communication Technology  
 **Institution:** Limkokwing University of Creative Technology, Sierra Leone  
@@ -169,12 +169,14 @@ The editable Mermaid source is stored in `Flowcharts/dhpdm_system.mmd`.
 
 # 11. GitHub Repository and Submission Guide
 
-The repository includes `README.md`, the report in `Documentation/`, the flowchart source and PNG in `Flowcharts/`, the pseudocode in `Pseudocode/`, references, and a screenshot-evidence guide. The planned progressive commits are:
+The repository includes `README.md`, the report in `Documentation/`, the flowchart source and PNG in `Flowcharts/`, the pseudocode in `Pseudocode/`, an optional runnable reference implementation in `src/`, automated tests in `tests/`, references, and a screenshot-evidence guide. The existing history demonstrates progressive commits:
 
 1. `Initial commit: Add README and project outline`
 2. `Docs: Add rationale and SDG alignment`
 3. `Logic: Add DHPDMS pseudocode`
 4. `Docs: Add flowchart and complete report`
+
+The implementation can be checked with `python3 -m pytest -q`; the tests cover input boundaries, duplicate IDs, missing records, updates, and the maximum-record limit.
 
 For printed evidence, capture the repository home page, the commits page, and the rendered flowchart. Screenshots must not contain real patient information.
 
