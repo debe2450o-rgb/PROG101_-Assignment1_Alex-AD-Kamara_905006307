@@ -4,7 +4,7 @@
     <attribute name="name" value="DHPDMS - Digital Healthcare Patient Data Management System" />
     <attribute name="authors" value="Alex Alimamy Debe Kamara" />
     <attribute name="about" value="PROG101 classroom flowchart for patient registration, search, update, and exit." />
-    <attribute name="saved" value="2026-10-09 15:54:00" />
+    <attribute name="saved" value="2026-10-12 23:15:00" />
   </attributes>
   <function name="Main" type="None" variable="False">
     <parameters />
@@ -13,44 +13,42 @@
       <declare name="isSystemRunning" type="Boolean" array="False" size="" />
       <assign variable="isSystemRunning" expression="true" />
       <while expression="isSystemRunning == true">
-        <body>
-          <output expression="&quot;SIERRA LEONE DIGITAL HEALTH SYSTEM&quot;" newline="True" />
-          <output expression="&quot;1. Register New Patient&quot;" newline="True" />
-          <output expression="&quot;2. Search Patient Record&quot;" newline="True" />
-          <output expression="&quot;3. Add Diagnosis / Treatment&quot;" newline="True" />
-          <output expression="&quot;4. Exit System&quot;" newline="True" />
-          <input variable="menuChoice" />
-          <if expression="menuChoice == 1">
-            <then>
-              <call expression="RegisterPatient()" />
-            </then>
-            <else>
-              <if expression="menuChoice == 2">
-                <then>
-                  <call expression="SearchPatient()" />
-                </then>
-                <else>
-                  <if expression="menuChoice == 3">
-                    <then>
-                      <call expression="UpdateRecord()" />
-                    </then>
-                    <else>
-                      <if expression="menuChoice == 4">
-                        <then>
-                          <assign variable="isSystemRunning" expression="false" />
-                          <output expression="&quot;System closed successfully.&quot;" newline="True" />
-                        </then>
-                        <else>
-                          <output expression="&quot;Invalid selection. Please choose 1 to 4.&quot;" newline="True" />
-                        </else>
-                      </if>
-                    </else>
-                  </if>
-                </else>
-              </if>
-            </else>
-          </if>
-        </body>
+        <output expression="&quot;SIERRA LEONE DIGITAL HEALTH SYSTEM&quot;" newline="True" />
+        <output expression="&quot;1. Register New Patient&quot;" newline="True" />
+        <output expression="&quot;2. Search Patient Record&quot;" newline="True" />
+        <output expression="&quot;3. Add Diagnosis / Treatment&quot;" newline="True" />
+        <output expression="&quot;4. Exit System&quot;" newline="True" />
+        <input variable="menuChoice" />
+        <if expression="menuChoice == 1">
+          <then>
+            <call expression="RegisterPatient()" />
+          </then>
+          <else>
+            <if expression="menuChoice == 2">
+              <then>
+                <call expression="SearchPatient()" />
+              </then>
+              <else>
+                <if expression="menuChoice == 3">
+                  <then>
+                    <call expression="UpdateRecord()" />
+                  </then>
+                  <else>
+                    <if expression="menuChoice == 4">
+                      <then>
+                        <assign variable="isSystemRunning" expression="false" />
+                        <output expression="&quot;System closed successfully.&quot;" newline="True" />
+                      </then>
+                      <else>
+                        <output expression="&quot;Invalid selection. Please choose 1 to 4.&quot;" newline="True" />
+                      </else>
+                    </if>
+                  </else>
+                </if>
+              </else>
+            </if>
+          </else>
+        </if>
       </while>
     </body>
   </function>
