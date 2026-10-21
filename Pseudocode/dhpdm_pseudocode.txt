@@ -1,11 +1,7 @@
-PROGRAM: Digital Healthcare Patient Data Management System (DHPDMS)
-AUTHOR: Alex Alimamy Debe Kamara
-STUDENT ID: 905006307
-COURSE: PROG101 - Principles of Programming Logic and Design
+START 
+ CONSTANT INTEGER MAX_PATIENTS = 100
 
-CONSTANT INTEGER MAX_PATIENTS = 100
-
-MODULE Main()
+ MODULE Main()
     DECLARE INTEGER menuChoice
     DECLARE BOOLEAN isSystemRunning
     DECLARE ARRAY patientID[0..MAX_PATIENTS-1]
@@ -136,6 +132,5 @@ MODULE UpdateRecord(patientID[], INOUT diagnosisHistory[], recordCount)
         SET diagnosisHistory[position] = diagnosisHistory[position] + " | " + newEntry
         PRINT "Medical record updated successfully."
     END IF
-END MODULE
-
-END PROGRAM
+ END MODULE
+END
