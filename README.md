@@ -28,7 +28,31 @@ This project contains **no real patient data**. It is not a clinical system. Any
 - `ValidatePatientInput` — prevents blank IDs, impossible ages, and empty names.
 
 ## Pseudocode
+# DHPDMS Step-by-Step Algorithm
 
+1.START 
+2. Set `MAX_PATIENTS = 100` and create six parallel arrays: `patientID`, `fullName`, `age`, `gender`, `contactNumber`, and `diagnosisHistory`.
+3. Set `recordCount = 0` and `isSystemRunning = TRUE`.
+4. While `isSystemRunning == TRUE`:
+   1. Display the menu: Register, Search, Update, or Exit.
+   2. Read `menuChoice`.
+   3. If `menuChoice == 1`, call `RegisterPatient`.
+   4. Else if `menuChoice == 2`, call `SearchPatient`.
+   5. Else if `menuChoice == 3`, call `UpdateRecord`.
+   6. Else if `menuChoice == 4`, set `isSystemRunning = FALSE` and print the closure message.
+   7. Otherwise, print an invalid-selection message.
+5. **ValidatePatientInput** returns `TRUE` only when the patient ID and name are not blank and the age is between 0 and 130 inclusive.
+6. **FindPatientIndex** loops from index `0` to `recordCount - 1`; it returns the matching index or `-1` when no patient is found.
+7. **RegisterPatient**:
+   1. If `recordCount >= MAX_PATIENTS`, print a storage-full error and stop.
+   2. Read the patient ID, name, age, gender, contact number, and diagnosis.
+   3. If validation fails, print an error and stop.
+   4. If the patient ID already exists, print a duplicate-ID error and stop.
+   5. Store the values at index `recordCount`, increment `recordCount`, and print a success message.
+   8. **SearchPatient** reads a target patient ID, finds its index, and either prints the complete record or prints `Patient record not found.`.
+   9. **UpdateRecord** reads a target   patient ID, finds its index, and either  appends a diagnosis/treatment note or prints `Patient ID does not exist.`.
+  10. When the loop ends, **end the program**.
+11. END
 
 
 
