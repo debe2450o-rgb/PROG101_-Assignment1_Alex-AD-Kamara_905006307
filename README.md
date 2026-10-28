@@ -27,11 +27,8 @@ This project contains **no real patient data**. It is not a clinical system. Any
 - `FindPatientIndex` — reusable sequential-search function.
 - `ValidatePatientInput` — prevents blank IDs, impossible ages, and empty names.
 
-## Optional runnable reference
+## Pseudocode
 
-`src/patient_data_system.py` is a small Python implementation of the submitted
-logic. It stores synthetic records in memory and is included for demonstration
-and testing only; it is not a clinical application.
 
 
 
