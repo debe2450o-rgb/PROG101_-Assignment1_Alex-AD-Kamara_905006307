@@ -33,17 +33,7 @@ This project contains **no real patient data**. It is not a clinical system. Any
 logic. It stores synthetic records in memory and is included for demonstration
 and testing only; it is not a clinical application.
 
-Run it with:
 
-```bash
-python3 src/patient_data_system.py
-```
-
-Run the automated checks with:
-
-```bash
-python3 -m pytest -q
-```
 
 ## Structure
 
