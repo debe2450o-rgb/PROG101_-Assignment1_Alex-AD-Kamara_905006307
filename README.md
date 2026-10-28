@@ -28,7 +28,8 @@ This project contains **no real patient data**. It is not a clinical system. Any
 - `ValidatePatientInput` — prevents blank IDs, impossible ages, and empty names.
 
 ## Pseudocode
-1.START 
+1. START 
+
 2. Set `MAX_PATIENTS = 100` and create six parallel arrays: `patientID`, `fullName`, `age`, `gender`, `contactNumber`, and `diagnosisHistory`.
 3. Set `recordCount = 0` and `isSystemRunning = TRUE`.
 4. While `isSystemRunning == TRUE`:
