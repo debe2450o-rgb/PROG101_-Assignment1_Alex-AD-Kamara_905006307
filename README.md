@@ -55,20 +55,7 @@ This project contains **no real patient data**. It is not a clinical system. Any
 
 
 
-## Structure
+## Structure of the Flowchart 
 
-```text
-├── README.md
-├── Documentation/Report.pdf
-├── Documentation/Report.docx
-├── Documentation/Report.md
-├── Flowcharts/dhpdm_system.mmd
-├── Flowcharts/dhpdm_system.fprg
-├── Flowcharts/dhpdm_system.png
-├── Pseudocode/dhpdm_pseudocode.txt
-├── src/patient_data_system.py
-├── tests/test_patient_data_system.py
-├── References/sources.md
-├── Screenshots/README.md
-└── DHPDMS_Project.zip
-```
+<img width="943" height="1024" alt="image_84485a4b-2e61-4c58-9bcb-0b600e5ef2aa" src="https://github.com/user-attachments/assets/a4ff7c6f-7f15-46eb-901e-52ab8caeac42" />
+
