@@ -34,14 +34,16 @@ Key aspects of the problem and its solution include:
 - `ValidatePatientInput` — prevents blank IDs, impossible ages, and empty names.
 
 ## Pseudocode
-START
 
- CONSTANT MAX = 100
+START
+CONSTANT MAX = 100
 
  MODULE Main()
+    
     DECLARE INTEGER choice, count = 0, running = TRUE
     DECLARE ID[100], name[100], age[100], gender[100], phone[100], history[100]
     WHILE running == TRUE
+       
         PRINT "1.Register 2.Search 3.Update 4.Exit"
         INPUT choice
         IF choice == 1 THEN
