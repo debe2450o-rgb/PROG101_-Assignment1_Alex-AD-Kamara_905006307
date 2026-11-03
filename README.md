@@ -11,7 +11,7 @@ Examiner: Elijah Fullah
 
 DHPDMS is a classroom logic prototype for a lightweight, offline-first digital patient-record workflow in Sierra Leone. It supports patient registration, record search, diagnosis/treatment updates, input validation, and a repeating menu. It is designed to demonstrate sequence, selection, repetition, functions, modularity, and array searching.
 
-##Problem solve 
+## Problem solve 
 The Digital Healthcare Patient Data Management System (DHPDMS) solves the problem of inefficient, paper-based patient record-keeping in Sierra Leone clinics by providing a lightweight, offline-first digital solution.
 Key aspects of the problem and its solution include:
  * The Problem: Traditional paper records are prone to physical loss, slow retrieval times, and human error during patient intake and medical history tracking.
