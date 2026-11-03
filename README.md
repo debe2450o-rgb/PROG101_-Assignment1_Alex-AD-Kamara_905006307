@@ -11,7 +11,13 @@ Examiner: Elijah Fullah
 
 DHPDMS is a classroom logic prototype for a lightweight, offline-first digital patient-record workflow in Sierra Leone. It supports patient registration, record search, diagnosis/treatment updates, input validation, and a repeating menu. It is designed to demonstrate sequence, selection, repetition, functions, modularity, and array searching.
 
-This project contains **no real patient data**. It is not a clinical system. Any real deployment would require authorization, privacy safeguards, role-based access, encryption, audit logs, consent and data-retention rules, clinical validation, backups, and interoperability with approved health systems.
+##Problem solve 
+The Digital Healthcare Patient Data Management System (DHPDMS) solves the problem of inefficient, paper-based patient record-keeping in Sierra Leone clinics by providing a lightweight, offline-first digital solution.
+Key aspects of the problem and its solution include:
+ * The Problem: Traditional paper records are prone to physical loss, slow retrieval times, and human error during patient intake and medical history tracking.
+ * The Solution: A structured, console-based digital application that enables fast patient registration, instant record searching via unique IDs, and secure diagnosis/treatment updates.
+ * Impact: Streamlines clinic workflows, minimizes administrative errors, and supports local healthcare infrastructure aligned with Sustainable Development Goals (SDG 3 and SDG 9).
+ * 
 
 ## SDG alignment
 
@@ -28,31 +34,50 @@ This project contains **no real patient data**. It is not a clinical system. Any
 - `ValidatePatientInput` — prevents blank IDs, impossible ages, and empty names.
 
 ## Pseudocode
-1. START 
-
-2. Set `MAX_PATIENTS = 100` and create six parallel arrays: `patientID`, `fullName`, `age`, `gender`, `contactNumber`, and `diagnosisHistory`.
-3. Set `recordCount = 0` and `isSystemRunning = TRUE`.
-4. While `isSystemRunning == TRUE`:
-   1. Display the menu: Register, Search, Update, or Exit.
-   2. Read `menuChoice`.
-   3. If `menuChoice == 1`, call `RegisterPatient`.
-   4. Else if `menuChoice == 2`, call `SearchPatient`.
-   5. Else if `menuChoice == 3`, call `UpdateRecord`.
-   6. Else if `menuChoice == 4`, set `isSystemRunning = FALSE` and print the closure message.
-   7. Otherwise, print an invalid-selection message.
-5. **ValidatePatientInput** returns `TRUE` only when the patient ID and name are not blank and the age is between 0 and 130 inclusive.
-6. **FindPatientIndex** loops from index `0` to `recordCount - 1`; it returns the matching index or `-1` when no patient is found.
-7. **RegisterPatient**:
-   1. If `recordCount >= MAX_PATIENTS`, print a storage-full error and stop.
-   2. Read the patient ID, name, age, gender, contact number, and diagnosis.
-   3. If validation fails, print an error and stop.
-   4. If the patient ID already exists, print a duplicate-ID error and stop.
-   5. Store the values at index `recordCount`, increment `recordCount`, and print a success message.
-   8. **SearchPatient** reads a target patient ID, finds its index, and either prints the complete record or prints `Patient record not found.`.
-   9. **UpdateRecord** reads a target   patient ID, finds its index, and either  appends a diagnosis/treatment note or prints `Patient ID does not exist.`.
-  10. When the loop ends, **end the program**.
-11. END
-
+START
+CONSTANT MAX = 100
+MODULE Main()
+    DECLARE INTEGER choice, count = 0, running = TRUE
+    DECLARE ID[100], name[100], age[100], gender[100], phone[100], history[100]
+    WHILE running == TRUE
+        PRINT "1.Register 2.Search 3.Update 4.Exit"
+        INPUT choice
+        IF choice == 1 THEN
+            IF count >= MAX THEN PRINT "Full"
+            ELSE
+                INPUT ID[count], name[count], age[count], gender[count], phone[count], history[count]
+                IF age[count] < 0 OR age[count] > 130 THEN PRINT "Invalid Age"
+                ELSE
+                    SET count = count + 1
+                    PRINT "Saved"
+                END IF
+            END IF
+        ELSE IF choice == 2 THEN
+            DECLARE target, pos = -1
+            INPUT target
+            FOR i = 0 TO count - 1
+                IF ID[i] == target THEN SET pos = i
+            END FOR
+            IF pos == -1 THEN PRINT "Not Found"
+            ELSE PRINT name[pos], age[pos], gender[pos], phone[pos], history[pos]
+            END IF
+        ELSE IF choice == 3 THEN
+            DECLARE target, entry, pos = -1
+            INPUT target, entry
+            FOR i = 0 TO count - 1
+                IF ID[i] == target THEN SET pos = i
+            END FOR
+            IF pos == -1 THEN PRINT "Not Found"
+            ELSE 
+                SET history[pos] = history[pos] + " | " + entry
+                PRINT "Updated"
+            END IF
+        ELSE IF choice == 4 THEN
+            SET running = FALSE
+        END IF
+    END WHILE
+END MODULE
+END
 
 
 ## Structure of the Flowchart 
