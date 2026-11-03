@@ -1,136 +1,44 @@
-START 
- CONSTANT INTEGER MAX_PATIENTS = 100
-
- MODULE Main()
-    DECLARE INTEGER menuChoice
-    DECLARE BOOLEAN isSystemRunning
-    DECLARE ARRAY patientID[0..MAX_PATIENTS-1]
-    DECLARE ARRAY fullName[0..MAX_PATIENTS-1]
-    DECLARE ARRAY age[0..MAX_PATIENTS-1]
-    DECLARE ARRAY gender[0..MAX_PATIENTS-1]
-    DECLARE ARRAY contactNumber[0..MAX_PATIENTS-1]
-    DECLARE ARRAY diagnosisHistory[0..MAX_PATIENTS-1]
-    DECLARE INTEGER recordCount
-
-    SET recordCount = 0
-    SET isSystemRunning = TRUE
-
-    WHILE isSystemRunning == TRUE DO
-        PRINT "SIERRA LEONE DIGITAL HEALTH SYSTEM"
-        PRINT "1. Register New Patient"
-        PRINT "2. Search Patient Record"
-        PRINT "3. Add Diagnosis / Treatment"
-        PRINT "4. Exit System"
-        INPUT menuChoice
-
-        IF menuChoice == 1 THEN
-            CALL RegisterPatient(patientID, fullName, age, gender,
-                                 contactNumber, diagnosisHistory,
-                                 recordCount, MAX_PATIENTS)
-        ELSE IF menuChoice == 2 THEN
-            CALL SearchPatient(patientID, fullName, age, gender,
-                               contactNumber, diagnosisHistory, recordCount)
-        ELSE IF menuChoice == 3 THEN
-            CALL UpdateRecord(patientID, diagnosisHistory, recordCount)
-        ELSE IF menuChoice == 4 THEN
-            SET isSystemRunning = FALSE
-            PRINT "System closed successfully."
-        ELSE
-            PRINT "Invalid selection. Please choose 1 to 4."
+START
+CONSTANT MAX = 100
+MODULE Main()
+    DECLARE INTEGER choice, count = 0, running = TRUE
+    DECLARE ID[100], name[100], age[100], gender[100], phone[100], history[100]
+    WHILE running == TRUE
+        PRINT "1.Register 2.Search 3.Update 4.Exit"
+        INPUT choice
+        IF choice == 1 THEN
+            IF count >= MAX THEN PRINT "Full"
+            ELSE
+                INPUT ID[count], name[count], age[count], gender[count], phone[count], history[count]
+                IF age[count] < 0 OR age[count] > 130 THEN PRINT "Invalid Age"
+                ELSE
+                    SET count = count + 1
+                    PRINT "Saved"
+                END IF
+            END IF
+        ELSE IF choice == 2 THEN
+            DECLARE target, pos = -1
+            INPUT target
+            FOR i = 0 TO count - 1
+                IF ID[i] == target THEN SET pos = i
+            END FOR
+            IF pos == -1 THEN PRINT "Not Found"
+            ELSE PRINT name[pos], age[pos], gender[pos], phone[pos], history[pos]
+            END IF
+        ELSE IF choice == 3 THEN
+            DECLARE target, entry, pos = -1
+            INPUT target, entry
+            FOR i = 0 TO count - 1
+                IF ID[i] == target THEN SET pos = i
+            END FOR
+            IF pos == -1 THEN PRINT "Not Found"
+            ELSE 
+                SET history[pos] = history[pos] + " | " + entry
+                PRINT "Updated"
+            END IF
+        ELSE IF choice == 4 THEN
+            SET running = FALSE
         END IF
     END WHILE
 END MODULE
-
-FUNCTION ValidatePatientInput(pID, name, patientAge) RETURNS BOOLEAN
-    IF pID == "" OR name == "" THEN
-        RETURN FALSE
-    ELSE IF patientAge < 0 OR patientAge > 130 THEN
-        RETURN FALSE
-    ELSE
-        RETURN TRUE
-    END IF
-END FUNCTION
-
-FUNCTION FindPatientIndex(patientID[], targetID, recordCount) RETURNS INTEGER
-    DECLARE INTEGER index
-    FOR index = 0 TO recordCount - 1 DO
-        IF patientID[index] == targetID THEN
-            RETURN index
-        END IF
-    END FOR
-    RETURN -1
-END FUNCTION
-
-MODULE RegisterPatient(INOUT patientID[], INOUT fullName[], INOUT age[],
-                       INOUT gender[], INOUT contactNumber[],
-                       INOUT diagnosisHistory[], INOUT recordCount, maxRecords)
-    DECLARE STRING pID, name, patientGender, phone, diagnosis
-    DECLARE INTEGER patientAge
-
-    IF recordCount >= maxRecords THEN
-        PRINT "ERROR: Patient storage is full."
-        RETURN
-    END IF
-
-    INPUT pID
-    INPUT name
-    INPUT patientAge
-    INPUT patientGender
-    INPUT phone
-    INPUT diagnosis
-
-    IF ValidatePatientInput(pID, name, patientAge) == FALSE THEN
-        PRINT "ERROR: Invalid patient information. Record not saved."
-        RETURN
-    END IF
-
-    IF FindPatientIndex(patientID, pID, recordCount) != -1 THEN
-        PRINT "ERROR: Patient ID already exists."
-        RETURN
-    END IF
-
-    SET patientID[recordCount] = pID
-    SET fullName[recordCount] = name
-    SET age[recordCount] = patientAge
-    SET gender[recordCount] = patientGender
-    SET contactNumber[recordCount] = phone
-    SET diagnosisHistory[recordCount] = diagnosis
-    SET recordCount = recordCount + 1
-    PRINT "Patient record successfully saved for ID: ", pID
-END MODULE
-
-MODULE SearchPatient(patientID[], fullName[], age[], gender[],
-                     contactNumber[], diagnosisHistory[], recordCount)
-    DECLARE STRING targetID
-    DECLARE INTEGER position
-
-    INPUT targetID
-    SET position = FindPatientIndex(patientID, targetID, recordCount)
-
-    IF position == -1 THEN
-        PRINT "Patient record not found."
-    ELSE
-        PRINT "Record found: ", fullName[position]
-        PRINT "Age: ", age[position]
-        PRINT "Gender: ", gender[position]
-        PRINT "Contact: ", contactNumber[position]
-        PRINT "Diagnosis history: ", diagnosisHistory[position]
-    END IF
-END MODULE
-
-MODULE UpdateRecord(patientID[], INOUT diagnosisHistory[], recordCount)
-    DECLARE STRING targetID, newEntry
-    DECLARE INTEGER position
-
-    INPUT targetID
-    SET position = FindPatientIndex(patientID, targetID, recordCount)
-
-    IF position == -1 THEN
-        PRINT "ERROR: Patient ID does not exist."
-    ELSE
-        INPUT newEntry
-        SET diagnosisHistory[position] = diagnosisHistory[position] + " | " + newEntry
-        PRINT "Medical record updated successfully."
-    END IF
- END MODULE
 END
