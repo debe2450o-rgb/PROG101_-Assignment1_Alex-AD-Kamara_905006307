@@ -35,8 +35,10 @@ Key aspects of the problem and its solution include:
 
 ## Pseudocode
 START
-CONSTANT MAX = 100
-MODULE Main()
+
+ CONSTANT MAX = 100
+
+ MODULE Main()
     DECLARE INTEGER choice, count = 0, running = TRUE
     DECLARE ID[100], name[100], age[100], gender[100], phone[100], history[100]
     WHILE running == TRUE
@@ -52,6 +54,7 @@ MODULE Main()
                     PRINT "Saved"
                 END IF
             END IF
+      
         ELSE IF choice == 2 THEN
             DECLARE target, pos = -1
             INPUT target
